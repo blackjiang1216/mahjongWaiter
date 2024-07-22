@@ -1,0 +1,68 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+</style>
+
+<main class="main">
+  <!-- 資訊bar -->
+  <header>
+    <h4 class="subtitle">
+      <b>目前張數: {{ nowTileCounter() }}張</b>
+      <span class="imgLocation"><img src="../assets/images/favicon.ico" class="faviconSize"></span>
+    </h4>
+    <h4 class="subtitle"><b>目前手牌</b></h4>
+    <!-- 目前手牌 -->
+    <div class="nowTileSize">
+      <span><img src="../assets/images/finger.png" class="tileSize" /></span>
+      <span *ngFor="let nowTile of tileCounter;">
+        <span *ngIf="nowTile.counter > 0">
+          <span *ngFor="let num of [].constructor(nowTile.counter); let i = index">
+            <img [src]="nowTile.image" class="tileSize" />
+          </span>
+        </span>
+      </span>
+    </div>
+  </header>
+  <!-- 聽牌/錯誤訊息 -->
+  <div id="result">
+    <img src="../assets/images/boy_smile.png" class="boySmile" />
+    <b>鄉親! 伯夷來幫你看看聽什麼</b>
+  </div>
+
+  <!-- 牌河 -->
+  <div class="calculator">
+    <button id="reset" class="pulse" (click)="reset()">重設</button>
+    <button id="calculate" class="pulse" (click)="listenWhat()">計算聽牌</button>
+      
+    <div class="tile-input" id="tileInput">
+      <div class="tile-group" *ngFor="let tile of tileCounter; index as i;">
+        <div class="tile">
+          <img [src]="tile.image" class="tileSize" />
+        </div>
+        <div class="tile-controls">
+          <button class="tile-button" (click)="joinToNowTiles(tile)">+</button>
+          <span class="tile-count" id="count-1m">{{ tile.counter }}</span>
+          <button class="tile-button" (click)="removeFromNowTiles(tile)">-</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2024 尤汐伯夷 讓麻將成為全民運動！</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@boyplaymj" target="_blank">
+        <img src="../assets/images/youtube.png" class="iconSize" />
+      </a>
+      <a href="https://www.facebook.com/sawgameboy/?locale=zh_TW" target="_blank">
+        <img src="../assets/images/fb.png" class="iconSize" />
+      </a>
+      <a href="https://www.instagram.com/boyplaymj/" target="_blank">
+        <img src="../assets/images/ig.png" class="iconSize" />
+      </a>
+      <a href="https://www.twitch.tv/ji394c8c8?lang=zh-tw" target="_blank">
+        <img src="../assets/images/twitch.png" class="iconSize" />
+      </a>
+    </div>
+  </footer>
+</main> 
+<router-outlet />
