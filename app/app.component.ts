@@ -411,8 +411,6 @@ export class AppComponent{
     return false;
   }
 
-
-
   /**
    * 名稱: transferTile
    * 功用: 轉換手牌, 將counter橫向展開
