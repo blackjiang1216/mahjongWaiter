@@ -32,7 +32,9 @@
             "prerender": true,
             "ssr": {
               "entry": "server.ts"
-            }
+            },
+            "baseHref": "/mahjongWaiter/",
+            "deployUrl": "/mahjongWaiter/"
           },
           "configurations": {
             "production": {
